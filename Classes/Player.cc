@@ -9,6 +9,10 @@ Player::Player(const std::string& Name,const std::string& race,const std::string
     this->race = race;
     this->playerClass = playerClass;
     this->level = level;
+    this->meleeSlotOne = nullptr;
+    this->meleeSlotTwo = nullptr;
+    this->rangedSlotOne = nullptr;
+    this->rangedSlotTwo = nullptr;
     this->setPlayerHealth();
     this->setPlayerMana();
 }
@@ -37,5 +41,34 @@ void Player::printPlayerStats()
     std::cout << "Level: " << this->level << std::endl;
     std::cout << "Health: " << this->health << std::endl;
     std::cout << "Mana: " << this->mana << std::endl;
+    if(isMeleeSlotOneTaken())
+    {
+        meleeSlotOne->printItemStats();
+    }
     
 }
+
+void Player::equipMeleeSlotOne(Weapon* mainWep)
+{
+    this->meleeSlotOne = mainWep;
+}
+
+void Player::equipMeleeSlotTwo(Weapon* sideWep)
+{
+    this->meleeSlotTwo = sideWep;
+}
+
+bool Player::isMeleeSlotOneTaken()
+{
+    if(this->meleeSlotOne != nullptr)
+    {
+        return true;
+    }
+    return false;
+}
+
+std::string Player::getPlayerName()
+{
+    return this->name;
+}
+

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "Weapon.hh"
 
 #ifndef PLAYER_H
 #define PLAYER_H
@@ -14,6 +15,10 @@ class Player{
         int mana;
         std::string playerClass;
         std::string race;
+        Weapon* meleeSlotOne;
+        Weapon* meleeSlotTwo;
+        Weapon* rangedSlotOne;
+        Weapon* rangedSlotTwo;
 
 
     public:
@@ -32,6 +37,19 @@ class Player{
         void setPlayerMana();
 
         void printPlayerStats();
+
+        // Setters for weapons
+        void swapMeleeSlotOne(Weapon*);
+        void equipMeleeSlotOne(Weapon*);
+        bool isMeleeSlotOneTaken();
+
+        void swapMeleeSlotTwo(Weapon*);
+        void equipMeleeSlotTwo(Weapon*);
+
+        void attackMelee();
+        void attackRange();
+
+
 
 
 

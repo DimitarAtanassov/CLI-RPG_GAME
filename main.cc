@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include "Classes/Player.hh"
+#include "Classes/Weapon.hh"
+#include "Classes/Item.hh"
 #include <limits>
 int main(int argc, char* argv[])
 {
@@ -12,7 +14,9 @@ int main(int argc, char* argv[])
     std::string userClass;
     bool validRace = false;
     bool validClass = false;
-    
+    bool validWep = false;
+    int wepChoice;
+    Weapon* starterWep;
     std::cout << "-------------------" << std::endl;
     std::cout << "Welcome To NvrTower" << std::endl;
     std::cout << "-------------------" << std::endl;
@@ -114,5 +118,39 @@ int main(int argc, char* argv[])
 
     Player *user = new Player(userName,userRace,userClass,1);
     user->printPlayerStats();
+
+    while(!validWep)
+    {
+        std::cout << "Select a Weapon " << user->getPlayerName() << ": " << std::endl;
+        std::cout << "1.) Sword" << std::endl;
+        std::cout << "1.) Axe" << std::endl;
+        std::cin >> wepChoice;
+        if(std::cin.fail())
+        {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard invalid input
+            std::cout << "Invalid input: Select a number between 1-2" << std::endl;
+        }
+        else
+        {
+            switch(wepChoice)
+            {
+                case 1:
+                    starterWep = new Weapon("Noobword", 1, 0, 1,12,"melee");
+                    user->equipMeleeSlotOne(starterWep);
+                    validWep = true;
+                    break;
+                case 2:
+                    starterWep = new Weapon("Noobxe", 1, 0, 1,12,"melee");
+                    user->equipMeleeSlotOne(starterWep);
+                    validWep = true;
+                    break;
+                default:
+                    std::cout << "Invalid Choice, input the corresponding number" << std::endl;
+            }
+        }
+    }
+    user->printPlayerStats();
+
     return 0;
 }
