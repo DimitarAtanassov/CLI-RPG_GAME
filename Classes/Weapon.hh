@@ -13,14 +13,16 @@ class Weapon : public Item{
         Weapon(std::string, int);
         Weapon(std::string,int,int,int,int,std::string);
         Weapon();
+        // ~Weapon();
         void equip();
-        void pickup();
-        void drop();
         void attack();
         void reload();
         void printItemStats() override;
         int getDamage();
         void setDamage(int);
+        std::string getType();
+        bool isMelee();
+        bool isRanged();
 };
 
 #endif

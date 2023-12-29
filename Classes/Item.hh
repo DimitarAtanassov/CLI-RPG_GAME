@@ -14,12 +14,11 @@ class Item
     public:
         Item(std::string, int, int,int);
         Item();
-        
+        // ~Item();
         int getItemLevel();
         int getItemPrice();
         int getItemId();
         std::string getItemName();
-
         void setItemLevel(int);
         void setItemPrice(int);
         void setItemID(int);

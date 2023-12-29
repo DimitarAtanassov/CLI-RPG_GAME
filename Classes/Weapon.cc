@@ -41,3 +41,26 @@ void Weapon::printItemStats()
     Item::printItemStats();
     std::cout << "Damage: " << getDamage() << std::endl;
 }
+
+std::string Weapon::getType()
+{
+    return this->type;
+}
+
+bool Weapon::isMelee()
+{
+    if(getType() == "melee")
+    {
+        return true;
+    }
+    return false;
+}
+
+bool Weapon::isRanged()
+{
+    if(getType() == "ranged")
+    {
+        return true;
+    }
+    return false;
+}

@@ -1,7 +1,9 @@
 #include <iostream>
 #include <string>
 #include "Player.hh"
-
+#include "Item.hh"
+#include "Weapon.hh"
+#include "linkedList.hh"
 
 Player::Player(const std::string& Name,const std::string& race,const std::string& playerClass,int level)
 {
@@ -50,12 +52,29 @@ void Player::printPlayerStats()
 
 void Player::equipMeleeSlotOne(Weapon* mainWep)
 {
-    this->meleeSlotOne = mainWep;
+    if(mainWep->isMelee())
+    {
+        this->meleeSlotOne = mainWep;
+        std::cout << "Equipped " << mainWep->getItemName() << " Successfully" << std::endl;
+    }
+    else
+    {
+        std::cout << "Cannot Equip this weapon in Melee slot it is a ranged weapon" << std::endl;
+    }
+    
 }
 
 void Player::equipMeleeSlotTwo(Weapon* sideWep)
 {
-    this->meleeSlotTwo = sideWep;
+    if(sideWep->isMelee())
+    {
+        this->meleeSlotTwo = sideWep;
+        std::cout << "Equipped " << sideWep->getItemName() << " Successfully" << std::endl;
+    }
+    else
+    {
+        std::cout << "Cannot Equip this weapon in Melee slot it is a ranged weapon" << std::endl;
+    }
 }
 
 bool Player::isMeleeSlotOneTaken()
@@ -72,3 +91,25 @@ std::string Player::getPlayerName()
     return this->name;
 }
 
+void Player::addItemToInventory(Item* item)
+{
+    playInventory.insertTail(item);
+}
+
+
+void Player::openInventory()
+{
+    Node<Item*>* currItem = playInventory.getHead();
+    if(currItem != nullptr)
+    {
+        // A-> B -> C -> Null
+        //    curr
+
+        while(currItem != nullptr)
+        {
+            currItem->data->printItemStats();
+            currItem = currItem->next;
+        }
+    }
+
+}

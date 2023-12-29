@@ -3,6 +3,8 @@
 #include "Classes/Player.hh"
 #include "Classes/Weapon.hh"
 #include "Classes/Item.hh"
+#include "Classes/Inventory.hh"
+#include "Classes/linkedList.hh"
 #include <limits>
 int main(int argc, char* argv[])
 {
@@ -117,13 +119,14 @@ int main(int argc, char* argv[])
 
 
     Player *user = new Player(userName,userRace,userClass,1);
+    //Inventory *playerInv = new Inventory();
     user->printPlayerStats();
 
     while(!validWep)
     {
         std::cout << "Select a Weapon " << user->getPlayerName() << ": " << std::endl;
         std::cout << "1.) Sword" << std::endl;
-        std::cout << "1.) Axe" << std::endl;
+        std::cout << "2.) Axe" << std::endl;
         std::cin >> wepChoice;
         if(std::cin.fail())
         {
@@ -137,11 +140,13 @@ int main(int argc, char* argv[])
             {
                 case 1:
                     starterWep = new Weapon("Noobword", 1, 0, 1,12,"melee");
+                    user->addItemToInventory(starterWep);
                     user->equipMeleeSlotOne(starterWep);
                     validWep = true;
                     break;
                 case 2:
                     starterWep = new Weapon("Noobxe", 1, 0, 1,12,"melee");
+                    user->addItemToInventory(starterWep);
                     user->equipMeleeSlotOne(starterWep);
                     validWep = true;
                     break;
@@ -151,6 +156,7 @@ int main(int argc, char* argv[])
         }
     }
     user->printPlayerStats();
+    user->openInventory();
 
     return 0;
 }

@@ -1,6 +1,9 @@
 #include <iostream>
 #include <string>
 #include "Weapon.hh"
+#include "Inventory.hh"
+#include "linkedList.hh"
+#include "Item.hh"
 
 #ifndef PLAYER_H
 #define PLAYER_H
@@ -19,7 +22,7 @@ class Player{
         Weapon* meleeSlotTwo;
         Weapon* rangedSlotOne;
         Weapon* rangedSlotTwo;
-
+        linkedList<Item*> playInventory;
 
     public:
         Player(const std::string&,const std::string&,const std::string&,int);    //Constructor
@@ -48,8 +51,8 @@ class Player{
 
         void attackMelee();
         void attackRange();
-
-
+        void addItemToInventory(Item*);
+        void openInventory();
 
 
 
