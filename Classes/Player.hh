@@ -37,7 +37,7 @@ class Player{
         void setPlayerHealth();
 
         int getPlayerMana();
-        void setPlayerMana();
+        void setPlayerMana(int);
 
         void printPlayerStats();
 
@@ -48,6 +48,7 @@ class Player{
 
         void swapMeleeSlotTwo(Weapon*);
         void equipMeleeSlotTwo(Weapon*);
+        bool isMeleeSlotTwoTaken();
 
         void attackMelee();
         void attackRange();

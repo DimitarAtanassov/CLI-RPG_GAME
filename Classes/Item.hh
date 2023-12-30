@@ -3,7 +3,13 @@
 
 #ifndef ITEM_H
 #define ITEM_H
-
+// Base Class for all Items in Game
+/*Items Include:
+    Gear
+    Weapons
+    Poitions
+    Misc
+*/
 class Item
 {
     protected:

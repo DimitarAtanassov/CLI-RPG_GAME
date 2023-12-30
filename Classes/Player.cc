@@ -16,7 +16,7 @@ Player::Player(const std::string& Name,const std::string& race,const std::string
     this->rangedSlotOne = nullptr;
     this->rangedSlotTwo = nullptr;
     this->setPlayerHealth();
-    this->setPlayerMana();
+    this->setPlayerMana(100);
 }
 
 void Player::setPlayerHealth()
@@ -31,9 +31,9 @@ void Player::setPlayerHealth()
     }
 }
 
-void Player::setPlayerMana()
+void Player::setPlayerMana(int mana)
 {
-    this->mana = 100;
+    this->mana = mana;
 }
 
 void Player::printPlayerStats()

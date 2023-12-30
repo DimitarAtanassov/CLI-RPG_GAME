@@ -3,7 +3,7 @@
 #include "Item.hh"
 #ifndef WEAPON_H
 #define WEAPON_H
-
+//Polymorphing Item into Weapon
 class Weapon : public Item{
     
     private:
