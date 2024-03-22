@@ -10,13 +10,16 @@
 
 class Warrior : public Player
 {
+    private:
+        Weapon* offHandWeaponSlot; // General weapon slot for all players
     public:
         Warrior(const std::string& name, const std::string& race, int level) :
         Player(name,race,"Warrior",level){}
 
-        virtual void setPlayerHealth() override;
-        
+        void equipItem(Item* item) override;
+        bool isMainWeaponEquipped();
+        bool isOffHandWeaponEquipped();
 };
 
 
-#endif
+#endif  

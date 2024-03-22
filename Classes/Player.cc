@@ -11,8 +11,9 @@ Player::Player(const std::string& Name,const std::string& race,const std::string
     this->race = race;
     this->playerClass = playerClass;
     this->level = level;
-    this->setPlayerHealth();
-    this->setPlayerMana();
+    this->setPlayerHealth(100);
+    this->setPlayerMana(100);
+    this->mainWeaponSlot = nullptr;
 }
 
 void Player::setPlayerHealth(int hp)
@@ -20,9 +21,9 @@ void Player::setPlayerHealth(int hp)
     this->health = hp;
 }
 
-void Player::setPlayerMana()
+void Player::setPlayerMana(int mp)
 {
-    this->mana = 100;
+    this->mana = mp;
 }
 
 void Player::printPlayerStats()
@@ -45,17 +46,17 @@ void Player::addItemToInventory(Item* item)
 {
     inventory.addItem(item);
 }
-
+  
 
 void Player::equipItem(Item* item)
 {
     if (Weapon* weapon = dynamic_cast<Weapon*>(item))
     {
-        if(this->weaponSlot)
+        if(this->mainWeaponSlot)
         {
-            inventory.addItem(weaponSlot);
+            inventory.addItem(mainWeaponSlot);
         }
-        weaponSlot = weapon;
+        mainWeaponSlot = weapon;
     }
         
 }
@@ -73,7 +74,7 @@ bool Player::isAlive()
 
 int Player::attack()
 {
-    return weaponSlot->getDamage();
+    return mainWeaponSlot->getDamage();
 }
 // void Player::equipMeleeSlotOne(Weapon* mainWep)
 // {

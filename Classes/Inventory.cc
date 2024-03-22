@@ -12,5 +12,17 @@ Inventory::Inventory()
 
 void Inventory::addItem(Item* item)
 {
-    itemList.insertTail(item);
+    inventory.insertTail(item);
+}
+
+void Inventory::printInventory()
+{
+    std::cout << "Items in inventory:" << std::endl;
+    Node<Item*>* curr = inventory.getHead();
+
+    while (curr != nullptr)
+    {
+        std::cout << curr->data->getItemName() << std::endl;
+        curr = curr->next;   
+    }
 }

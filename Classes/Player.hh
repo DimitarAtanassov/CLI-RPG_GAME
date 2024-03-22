@@ -21,7 +21,7 @@ class Player{
         int mana;
         std::string playerClass;
         std::string race;
-        Weapon* weaponSlot; // General weapon slot for all players
+        Weapon* mainWeaponSlot; // General weapon slot for all players
 
     public:
         Player(const std::string&,const std::string&,const std::string&,int);    //Constructor
@@ -36,22 +36,11 @@ class Player{
         virtual void setPlayerHealth(int);
         bool isAlive();
         int getPlayerMana();
-        virtual void setPlayerMana();
+        virtual void setPlayerMana(int);
 
         void printPlayerStats();
-
-        // Setters for weapons
-        void swapMeleeSlotOne(Weapon*);
-        void equipMeleeSlotOne(Weapon*);
-        bool isMeleeSlotOneTaken();
+        
         virtual void equipItem(Item*);
-
-        void swapMeleeSlotTwo(Weapon*);
-        void equipMeleeSlotTwo(Weapon*);
-        bool isMeleeSlotTwoTaken();
-
-        void attackMelee();
-        void attackRange();
         void addItemToInventory(Item*);
         void openInventory();
         int attack();
