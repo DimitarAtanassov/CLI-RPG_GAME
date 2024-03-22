@@ -1,0 +1,6 @@
+Roll Function:
+    - srand(time(nullptr));
+        - This seeds our random number generator using the current time, so each sequence of random numbers generated is different everytime the program runs
+        - without seeding, the random number sequence would be the same every time the program is run.
+        
+

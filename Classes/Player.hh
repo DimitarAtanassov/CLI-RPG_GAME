@@ -12,17 +12,16 @@
 class Player{
 
     private:
+         Inventory inventory;
+    
+    protected:
         std::string name;
         int level;
         int health;
         int mana;
         std::string playerClass;
         std::string race;
-        Weapon* meleeSlotOne;
-        Weapon* meleeSlotTwo;
-        Weapon* rangedSlotOne;
-        Weapon* rangedSlotTwo;
-        linkedList<Item*> playInventory;
+        Weapon* weaponSlot; // General weapon slot for all players
 
     public:
         Player(const std::string&,const std::string&,const std::string&,int);    //Constructor
@@ -34,10 +33,10 @@ class Player{
         void setPlayerLevel(int);
 
         int getPlayerHealth();
-        void setPlayerHealth();
-
+        virtual void setPlayerHealth(int);
+        bool isAlive();
         int getPlayerMana();
-        void setPlayerMana(int);
+        virtual void setPlayerMana();
 
         void printPlayerStats();
 
@@ -45,6 +44,7 @@ class Player{
         void swapMeleeSlotOne(Weapon*);
         void equipMeleeSlotOne(Weapon*);
         bool isMeleeSlotOneTaken();
+        virtual void equipItem(Item*);
 
         void swapMeleeSlotTwo(Weapon*);
         void equipMeleeSlotTwo(Weapon*);
@@ -54,7 +54,7 @@ class Player{
         void attackRange();
         void addItemToInventory(Item*);
         void openInventory();
-
+        int attack();
 
 
 };

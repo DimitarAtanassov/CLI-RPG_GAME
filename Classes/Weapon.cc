@@ -1,29 +1,23 @@
 #include "Weapon.hh"
 #include "Item.hh"
+// Constructors
 Weapon::Weapon()
 {
-    this->name = "None";
-    this->level = 0;
-    this->price = 0;
-    this->id = 0;
-    this->type = "None";
+    this->type = WeaponType::None;
     this->damage = 0;
 }
 
-Weapon::Weapon(std::string type, int damage)
+Weapon::Weapon(WeaponType t, int dmg)
 {
-    this->type = type;
-    this->damage = damage;
+    this->type = t;
+    this->damage = dmg;
 }
 
-Weapon::Weapon(std::string name,int level,int price,int id ,int damage,std::string type)
+Weapon::Weapon(std::string name,int level,int price,int id ,int dmg,WeaponType t)
+: Item(name,level,price,id)
 {
-    this->name = name;
-    this->level = level;
-    this->price = price;
-    this->id = id;
-    this->damage = damage;
-    this->type = type;
+    this->type = WeaponType::None;
+    this->damage = 0;
 }
 
 int Weapon::getDamage()
@@ -42,14 +36,14 @@ void Weapon::printItemStats()
     std::cout << "Damage: " << getDamage() << std::endl;
 }
 
-std::string Weapon::getType()
+WeaponType Weapon::getType()
 {
     return this->type;
 }
 
 bool Weapon::isMelee()
 {
-    if(getType() == "melee")
+    if(getType() == WeaponType::Melee)
     {
         return true;
     }
@@ -58,7 +52,7 @@ bool Weapon::isMelee()
 
 bool Weapon::isRanged()
 {
-    if(getType() == "ranged")
+    if(getType() == WeaponType::Ranged)
     {
         return true;
     }

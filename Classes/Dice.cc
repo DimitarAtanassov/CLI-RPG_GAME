@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <cstdlib>
+#include <ctime>
 #include "Dice.hh"
 
 Dice::Dice(int min,int max)
@@ -32,4 +34,13 @@ int Dice::getMin()
 int Dice::getMax()
 {
     return this->max;
+}
+
+int Dice::roll()
+{
+    // Seed the random number generator
+    srand(time(nullptr));
+    
+    // Generate a random number between min and max
+    return rand() % (max - min + 1) + min;
 }

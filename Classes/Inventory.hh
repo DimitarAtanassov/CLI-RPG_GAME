@@ -11,7 +11,10 @@ class Inventory
     public:
         linkedList<Item*> itemList; // Linked list where each node is an item
         Inventory();
+        ~Inventory();
         void addItem(Item*);
+        void removeItemByIndex();
+        
     private:
        void sortByPrice();
        void sortByType();

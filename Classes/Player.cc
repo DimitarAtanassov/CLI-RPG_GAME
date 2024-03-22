@@ -11,29 +11,18 @@ Player::Player(const std::string& Name,const std::string& race,const std::string
     this->race = race;
     this->playerClass = playerClass;
     this->level = level;
-    this->meleeSlotOne = nullptr;
-    this->meleeSlotTwo = nullptr;
-    this->rangedSlotOne = nullptr;
-    this->rangedSlotTwo = nullptr;
     this->setPlayerHealth();
-    this->setPlayerMana(100);
+    this->setPlayerMana();
 }
 
-void Player::setPlayerHealth()
+void Player::setPlayerHealth(int hp)
 {
-    if(this->playerClass == "Warrior" || this->playerClass == "Monk")
-    {
-        this->health = 12;
-    }
-    else if(this->playerClass == "Mage" || this->playerClass == "Healer")
-    {
-        this->health = 10;
-    }
+    this->health = hp;
 }
 
-void Player::setPlayerMana(int mana)
+void Player::setPlayerMana()
 {
-    this->mana = mana;
+    this->mana = 100;
 }
 
 void Player::printPlayerStats()
@@ -43,48 +32,9 @@ void Player::printPlayerStats()
     std::cout << "Level: " << this->level << std::endl;
     std::cout << "Health: " << this->health << std::endl;
     std::cout << "Mana: " << this->mana << std::endl;
-    if(isMeleeSlotOneTaken())
-    {
-        meleeSlotOne->printItemStats();
-    }
     
 }
 
-void Player::equipMeleeSlotOne(Weapon* mainWep)
-{
-    if(mainWep->isMelee())
-    {
-        this->meleeSlotOne = mainWep;
-        std::cout << "Equipped " << mainWep->getItemName() << " Successfully" << std::endl;
-    }
-    else
-    {
-        std::cout << "Cannot Equip this weapon in Melee slot it is a ranged weapon" << std::endl;
-    }
-    
-}
-
-void Player::equipMeleeSlotTwo(Weapon* sideWep)
-{
-    if(sideWep->isMelee())
-    {
-        this->meleeSlotTwo = sideWep;
-        std::cout << "Equipped " << sideWep->getItemName() << " Successfully" << std::endl;
-    }
-    else
-    {
-        std::cout << "Cannot Equip this weapon in Melee slot it is a ranged weapon" << std::endl;
-    }
-}
-
-bool Player::isMeleeSlotOneTaken()
-{
-    if(this->meleeSlotOne != nullptr)
-    {
-        return true;
-    }
-    return false;
-}
 
 std::string Player::getPlayerName()
 {
@@ -93,23 +43,70 @@ std::string Player::getPlayerName()
 
 void Player::addItemToInventory(Item* item)
 {
-    playInventory.insertTail(item);
+    inventory.addItem(item);
 }
 
 
-void Player::openInventory()
+void Player::equipItem(Item* item)
 {
-    Node<Item*>* currItem = playInventory.getHead();
-    if(currItem != nullptr)
+    if (Weapon* weapon = dynamic_cast<Weapon*>(item))
     {
-        // A-> B -> C -> Null
-        //    curr
-
-        while(currItem != nullptr)
+        if(this->weaponSlot)
         {
-            currItem->data->printItemStats();
-            currItem = currItem->next;
+            inventory.addItem(weaponSlot);
         }
+        weaponSlot = weapon;
+    }
+        
+}
+
+bool Player::isAlive()
+{
+    if(this->health > 0)
+    {
+        return true;
     }
 
+    return false;
 }
+
+
+int Player::attack()
+{
+    return weaponSlot->getDamage();
+}
+// void Player::equipMeleeSlotOne(Weapon* mainWep)
+// {
+//     if(mainWep->isMelee())
+//     {
+//         this->meleeSlotOne = mainWep;
+//         std::cout << "Equipped " << mainWep->getItemName() << " Successfully" << std::endl;
+//     }
+//     else
+//     {
+//         std::cout << "Cannot Equip this weapon in Melee slot it is a ranged weapon" << std::endl;
+//     }
+    
+// }
+
+// void Player::equipMeleeSlotTwo(Weapon* sideWep)
+// {
+//     if(sideWep->isMelee())
+//     {
+//         this->meleeSlotTwo = sideWep;
+//         std::cout << "Equipped " << sideWep->getItemName() << " Successfully" << std::endl;
+//     }
+//     else
+//     {
+//         std::cout << "Cannot Equip this weapon in Melee slot it is a ranged weapon" << std::endl;
+//     }
+// }
+
+// bool Player::isMeleeSlotOneTaken()
+// {
+//     if(this->meleeSlotOne != nullptr)
+//     {
+//         return true;
+//     }
+//     return false;
+// }

@@ -13,8 +13,7 @@ class Monster
         int health;
         int mana;
         std::string type;
-        Weapon* meleeSlotOne;
-        Weapon* meleeSlotTwo;
+        Weapon* weaponSlot;
         int gold; //How much currency the player will get for kill this monster
     
     public:
@@ -27,6 +26,7 @@ class Monster
 
         int getMonsterLevel();
         int getMonsterHealth();
+        bool isAlive();
         int getMonsterMana();
         int getMonsterGold();
         std::string getMonsterType();
@@ -38,6 +38,7 @@ class Monster
         void setMonsterGold(int);
         void setMonsterName(const std::string&);
         void setMonsterType(const std::string&);
+        int attack();
 };
 
 #endif

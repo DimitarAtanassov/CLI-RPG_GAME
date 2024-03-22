@@ -10,8 +10,7 @@ Monster::Monster(const std::string& name, const std::string& type, int level ,in
     this->level = level;
     this->health = health;
     this->mana = mana;
-    this->meleeSlotOne = mainWep;
-    this->meleeSlotTwo = nullptr;
+    this->weaponSlot = mainWep;
     this->gold = gold;
 }
 
@@ -23,8 +22,7 @@ Monster::Monster(const std::string& name, const std::string& type, int level ,in
     this->level = level;
     this->health = health;
     this->mana = mana;
-    this->meleeSlotOne = mainWep;
-    this->meleeSlotTwo = sideWep;
+    this->weaponSlot = mainWep;
     this->gold = gold;
 }
 
@@ -37,8 +35,7 @@ Monster::Monster(const std::string& name, const std::string& type, int level ,in
     this->health = health;
     this->mana = mana;
     this->gold = gold;
-    this->meleeSlotOne = nullptr;
-    this->meleeSlotTwo = nullptr;
+
 }
 
 int Monster::getMonsterLevel()
@@ -96,4 +93,17 @@ void Monster::setMonsterName(const std::string& name)
 void Monster::setMonsterType(const std::string& type)
 {
     this->type = type;
+}
+int Monster::attack()
+{
+    return weaponSlot->getDamage();
+}
+bool Monster::isAlive()
+{
+    if(this->health > 0)
+    {
+        return true;
+    }
+    return false;
+
 }
