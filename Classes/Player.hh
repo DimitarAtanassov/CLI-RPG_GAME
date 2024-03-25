@@ -27,19 +27,14 @@ class Player{
         Player(const std::string&,const std::string&,const std::string&,int);    //Constructor
         std::string getPlayerName();
         void setPlayerName(const std::string&);
-
-
         int getPlayerLevel();
         void setPlayerLevel(int);
-
         int getPlayerHealth();
         virtual void setPlayerHealth(int);
         bool isAlive();
         int getPlayerMana();
         virtual void setPlayerMana(int);
-
         void printPlayerStats();
-        
         virtual void equipItem(Item*);
         void addItemToInventory(Item*);
         void openInventory();

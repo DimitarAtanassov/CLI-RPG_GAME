@@ -17,6 +17,7 @@ void CombatManager::startCombat()
     int playerdmgtotal;
     int monsterDmgroll;
     int monsterDmgTotal;
+    
     while(currPlayer.isAlive() && currMonster.isAlive()) 
     {
         std::cout << currPlayer.getPlayerName() << "'s Health: " << currPlayer.getPlayerHealth() << std::endl;

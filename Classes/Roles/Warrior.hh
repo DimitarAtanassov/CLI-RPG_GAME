@@ -19,6 +19,7 @@ class Warrior : public Player
         void equipItem(Item* item) override;
         bool isMainWeaponEquipped();
         bool isOffHandWeaponEquipped();
+        
 };
 
 
