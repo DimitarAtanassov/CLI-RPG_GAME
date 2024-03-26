@@ -16,8 +16,8 @@ Weapon::Weapon(WeaponType t, int dmg)
 Weapon::Weapon(std::string name,int level,int price,int id ,int dmg,WeaponType t)
 : Item(name,level,price,id)
 {
-    this->type = WeaponType::None;
-    this->damage = 0;
+    this->type = t;
+    this->damage = dmg;
 }
 
 int Weapon::getDamage()

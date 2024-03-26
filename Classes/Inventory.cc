@@ -23,6 +23,7 @@ void Inventory::printInventory()
     while (curr != nullptr)
     {
         std::cout << curr->data->getItemName() << std::endl;
+        std::cout << &curr->data << std::endl;
         curr = curr->next;   
     }
 }

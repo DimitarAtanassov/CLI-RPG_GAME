@@ -35,6 +35,7 @@ Monster::Monster(const std::string& name, const std::string& type, int level ,in
     this->health = health;
     this->mana = mana;
     this->gold = gold;
+    this->weaponSlot = new Weapon("Hands",1, 0, 1,12,WeaponType::Melee);
 
 }
 

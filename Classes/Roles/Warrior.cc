@@ -5,8 +5,9 @@
 Warrior::Warrior(const std::string& name, const std::string& race, int level) :
          Player(name,race,"Warrior",level)
          {
-            this->mainWeaponSlot = nullptr;
             this->offHandWeaponSlot = nullptr;
+
+            this->setPlayerHealth(200);
          }
 
 void Warrior::equipItem(Item* item)

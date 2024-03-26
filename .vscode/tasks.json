@@ -14,7 +14,10 @@
                 "Classes/Player.cc",
                 "Classes/Item.cc",
                 "Classes/Inventory.cc",
-                "Classes/LinkedList.hh"
+                "Classes/LinkedList.hh",
+                "Classes/Monster.cc",
+                "Classes/Dice.cc",
+                "Classes/CombatManager.cc"
             ],
             "options": {
                 "cwd": "${fileDirname}"

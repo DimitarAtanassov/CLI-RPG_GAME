@@ -5,11 +5,10 @@
 #include "Weapon.hh"
 #include "linkedList.hh"
 
-Player::Player(const std::string& Name,const std::string& race,const std::string& playerClass,int level)
+Player::Player(const std::string& Name,const std::string& race,int level)
 {
     this->name = Name;
     this->race = race;
-    this->playerClass = playerClass;
     this->level = level;
     this->setPlayerHealth(100);
     this->setPlayerMana(100);
@@ -28,8 +27,8 @@ void Player::setPlayerMana(int mp)
 
 void Player::printPlayerStats()
 {
+
     std::cout << this->name << '(' << this->race << ')' << std::endl;
-    std::cout << "Class: " << this->playerClass << std::endl;
     std::cout << "Level: " << this->level << std::endl;
     std::cout << "Health: " << this->health << std::endl;
     std::cout << "Mana: " << this->mana << std::endl;
@@ -52,10 +51,6 @@ void Player::equipItem(Item* item)
 {
     if (Weapon* weapon = dynamic_cast<Weapon*>(item))
     {
-        if(this->mainWeaponSlot)
-        {
-            inventory.addItem(mainWeaponSlot);
-        }
         mainWeaponSlot = weapon;
     }
         
@@ -75,6 +70,31 @@ bool Player::isAlive()
 int Player::attack()
 {
     return mainWeaponSlot->getDamage();
+}
+
+void Player::setPlayerName(const std::string& newName )
+{
+    this->name = newName;
+}
+
+int Player::getPlayerLevel()
+{
+    return this->level;
+}
+
+void Player::setPlayerLevel(int level)
+{
+    this->level = level;
+}
+
+void Player::openInventory()
+{
+    inventory.printInventory();
+}
+
+int Player:: getPlayerHealth()
+{
+    return this->health;
 }
 // void Player::equipMeleeSlotOne(Weapon* mainWep)
 // {

@@ -5,11 +5,13 @@
 #define WEAPON_H
 
 // Enum class for different weapon types
+
 enum class WeaponType {
     None,
     Melee,
     Ranged
 };
+
 //Polymorphing Item into Weapon
 class Weapon : public Item{
     

@@ -11,7 +11,7 @@ class Inventory
     public:
        
         Inventory();
-        ~Inventory();
+        //~Inventory();
         void addItem(Item*);
         void printInventory();
     private:
